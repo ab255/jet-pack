@@ -1,0 +1,30 @@
+{
+  "name": "jet-pack",
+  "version": "1.0.0",
+  "description": "URL shortening app",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madison-kerndt/jet-pack.git"
+  },
+  "author": "Adam Bernard & Madison Kerndt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madison-kerndt/jet-pack/issues"
+  },
+  "homepage": "https://github.com/madison-kerndt/jet-pack#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "shortid": "^2.2.6"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
