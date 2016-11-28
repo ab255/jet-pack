@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/madison-kerndt/jet-pack/issues"
   },
-  "homepage": "https://github.com/madison-kerndt/jet-pack#readme"
+  "homepage": "https://github.com/madison-kerndt/jet-pack#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
