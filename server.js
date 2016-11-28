@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.locals.title = 'Jet Pack';
-app.locals.urlName = {
+app.locals.urlNames = {
   url: 'http://google.com/'
 };
 
@@ -15,12 +15,12 @@ app.set('port', process.env.PORT || 3000);
 
 // GET
 app.get('/', (request, response) => {
-  response.send('testing');
+  response.send({ urls: app.locals.urlNames});
 });
 
 app.get('/api/:id', (request, response) => {
   const { id } = request.params;
-  const url = app.locals.urlName[id];
+  const url = app.locals.urlNames[id];
 
   if(!url) {return response.sendStatus(404);}
 
@@ -28,18 +28,15 @@ app.get('/api/:id', (request, response) => {
 });
 
 // POST
-
 app.post('/', (request, response) => {
   const { url } = request.body;
   const id = Date.now();
 
   if(!url) {return response.sendStatus(404).send({
-    error: 'No URL provided'
-  });
+      error: 'No URL provided'
+    });
   }
-
-  app.locals.urlName[id] = url;
-
+  app.locals.urlNames[id] = url;
   response.status(201).json({ id, url });
 });
 
