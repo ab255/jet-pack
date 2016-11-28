@@ -18,14 +18,14 @@ app.get('/', (request, response) => {
   response.send({ urls: app.locals.urlNames});
 });
 
-// app.get('/api/:id', (request, response) => {
-//   const id = request.params;
-//   const longUrl = app.locals.urlNames[id];
-//
-//   const shortUrl = app.locals.urlNames[id];
-//   if(!url) {return response.sendStatus(404);}
-//   response.json({ id });
-// });
+app.get('/api/:id', (request, response) => {
+  const id = request.params;
+  const longUrl = app.locals.urlNames[id];
+
+  const shortUrl = app.locals.urlNames[id];
+  if(!url) {return response.sendStatus(404);}
+  response.json({ id });
+});
 
 // POST
 app.post('/', (request, response) => {
