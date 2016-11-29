@@ -15,16 +15,14 @@ app.set('port', process.env.PORT || 3000);
 
 // GET
 app.get('/', (request, response) => {
-  response.send({ urls: app.locals.urls});
+  response.send({ urls: app.locals.urls });
 });
 
-app.get('/api/:id', (request, response) => {
+app.get('/:id', (request, response) => {
   const id = request.params;
-  const longUrl = app.locals.urls[id];
 
-  const shortUrl = app.locals.urls[id];
-  if(!url) {return response.sendStatus(404);}
-  response.json({ id });
+  if(!id) {return response.sendStatus(404);}
+  return response.redirect('http://google.com');
 });
 
 // POST
@@ -39,10 +37,21 @@ app.post('/', (request, response) => {
       error: 'No URL provided'
     });
   }
-
   app.locals.urls.push({ id, url, date, clicks });
   response.status(201).json({ id, url, date, clicks });
 });
+
+// PUT METHOD
+// app.put('/:id', (request, response) => {
+//   const { id } = request.params;
+//   const { message } = request.body
+//
+//   if (!id){ return response.status(404);}
+//
+//   app.locals.urls[id] = clicks++;
+//
+//   response.json({ id, clicks});
+// });
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
