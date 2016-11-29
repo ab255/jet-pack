@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jet Pack</title>
+  </head>
+  <body>
+    <h1>Jet Pack</h1>
+    <form action="dinosaurs" method="POST">
+      <input type='text' placeholder='URL'></input>
+      <input type='submit'></input>
+    </form>
+    <ul class="url-list">
+      <% for(const i=0; i <dinosaurs.length; i++) {%>
+        <li class="url-item">
+          <span>
+            <% urls[i].url %>
+          </span>
+        </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
