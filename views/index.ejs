@@ -10,9 +10,9 @@
       <input type='text' placeholder='URL'></input>
       <input type='submit'></input>
     </form>
-    <ul class="url-list">
-      <% for(const i=0; i <dinosaurs.length; i++) {%>
-        <li class="url-item">
+    <ul class="urls">
+      <% for(let i=0; i <urls.length; i++) { %>
+        <li class="url">
           <span>
             <% urls[i].url %>
           </span>
