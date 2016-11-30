@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 // GET
 router.get('/', (request, response) => {
+  // Url.remove({ __v: 0 }, error => {
+  //   if (error) return handleError(error);
+  // })
   Url.find((error, Urls) => {
     if(error) {
       response.send(error)
@@ -21,6 +24,9 @@ router.get('/', (request, response) => {
 
 router.post('/', (request, resolution) => {
   var url = new Url(request.body);
+  url.id = shortid.generate();
+  url.date = new Date;
+  url.count = 0;
 
   url.save((error) => {
     if(error) {
@@ -33,47 +39,3 @@ router.post('/', (request, resolution) => {
 });
 
 module.exports = router;
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// app.get('/:id', (request, response) => {
-//   const id = request.params;
-//
-//   if(!id) {return response.sendStatus(404);}
-//   return response.redirect('http://google.com');
-// });
-//
-// // POST
-// app.post('/', (request, response) => {
-//   const id = shortid.generate();
-//   const { url } = request.body;
-//   const date = Date.now();
-//   const clicks = 0;
-//
-//   if(!url) {
-//     return response.sendStatus(404).send({
-//       error: 'No URL provided'
-//     });
-//   }
-//   app.locals.urls.push({ id, url, date, clicks });
-//   response.status(201).json({ id, url, date, clicks });
-// });
-
-// PUT METHOD
-// app.put('/:id', (request, response) => {
-//   const { id } = request.params;
-//   const { message } = request.body
-//
-//   if (!id){ return response.status(404);}
-//
-//   app.locals.urls[id] = clicks++;
-//
-//   response.json({ id, clicks});
-// });
