@@ -26,5 +26,4 @@ describe('GET /', () => {
         urls: app.locals.urlNames
       }, done);
   });
-
 });
