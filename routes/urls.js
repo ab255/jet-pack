@@ -40,10 +40,16 @@ router.post('/', (request, response) => {
 
 router.get('/:id', (request, response) => {
   Url.findOne({ id: request.params.id }, (error, url) => {
-    if (error || !url) {
+    url.count++;
+    if (error || !url ) {
       response.status(404).send(error);
     }
-    response.redirect(url.url);
+    url.save(error => {
+      if (error) {
+        response.send(error);
+      }
+      response.redirect(url.url);
+    });
   });
 });
 
