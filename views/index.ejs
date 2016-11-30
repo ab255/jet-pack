@@ -7,14 +7,15 @@
   <body>
     <h1>Jet Pack</h1>
     <form action="/jetpack" method="POST">
-      <input type='text' placeholder='URL'></input>
+      <input type='text' placeholder='URL' name='url'></input>
       <input type='submit'></input>
     </form>
     <ul class="urls">
       <% for(let i=0; i <urls.length; i++) { %>
+        <% console.log(urls[i]) %>
         <li class="url">
           <span>
-            <% urls[i].url %>
+            <% urls[i] %>
           </span>
         </li>
       <% } %>
