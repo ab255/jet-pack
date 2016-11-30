@@ -9,7 +9,6 @@ const shortid = require('shortid');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
-// GET
 router.get('/', (request, response) => {
   // Url.remove({ __v: 0 }, error => {
   //   if (error) return handleError(error);
@@ -40,10 +39,10 @@ router.post('/', (request, response) => {
 
 router.get('/:id', (request, response) => {
   Url.findOne({ id: request.params.id }, (error, url) => {
-    url.count++;
     if (error || !url ) {
       response.status(404).send(error);
     }
+    url.count++;
     url.save(error => {
       if (error) {
         response.send(error);

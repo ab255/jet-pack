@@ -20,8 +20,10 @@ app.use('/jetpack', urls);
 
 const port_number = process.env.PORT || 3000;
 
-app.listen(port_number, () => {
-  console.log(`Jet Pack is running on ${port_number}.`);
-});
+if (!module.parent) {
+  app.listen(port_number, () => {
+    console.log(`Jet Pack is running on ${port_number}.`);
+  });
+};
 
 module.exports = app;
