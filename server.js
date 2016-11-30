@@ -16,7 +16,7 @@ mongoose.connect(connectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/jetpack', urls);
+app.use('/', urls);
 
 const port_number = process.env.PORT || 3000;
 

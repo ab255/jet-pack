@@ -10,12 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
 router.get('/', (request, response) => {
-  // Url.remove({ __v: 0 }, error => {
-  //   if (error) return handleError(error);
-  // })
-  Url.find((error, Urls) => {
-    if(error) {
-      response.send(error)
+  Url.find().sort('date').exec((error, Urls) => {
+        if(error) {
+      return response.send(error)
     }
     response.render('index.ejs', { urls: Urls });
   });
@@ -29,7 +26,7 @@ router.post('/', (request, response) => {
 
   url.save((error) => {
     if(error) {
-      response.send(error)
+      return response.send(error)
     }
     Url.find((error, Urls) => {
       response.render('index.ejs', {urls: Urls });
@@ -37,15 +34,43 @@ router.post('/', (request, response) => {
   });
 });
 
+router.get('/oldest', (request, response) => {
+  Url.find().sort('-date').exec((error, Urls) => {
+    if(error) {
+      return response.send(error)
+    }
+    response.render('index.ejs', { urls: Urls });
+  });
+});
+
+router.get('/popular', (request, response) => {
+  Url.find().sort( '-count' ).exec((error, Urls) => {
+    if(error) {
+      return response.send(error)
+    }
+    response.render('index.ejs', { urls: Urls });
+  });
+});
+
+router.get('/unpopular', (request, response) => {
+  Url.find().sort( 'count' ).exec((error, Urls) => {
+    if(error) {
+      return response.send(error)
+    }
+    response.render('index.ejs', { urls: Urls });
+  });
+});
+
+
 router.get('/:id', (request, response) => {
   Url.findOne({ id: request.params.id }, (error, url) => {
-    if (error || !url ) {
-      response.status(404).send(error);
+    if ( error || !url ) {
+      return response.status(404).send(error);
     }
     url.count++;
     url.save(error => {
       if (error) {
-        response.send(error);
+        return response.send(error);
       }
       response.redirect(url.url);
     });

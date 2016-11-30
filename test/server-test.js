@@ -18,7 +18,6 @@ describe('GET /jetpack', () => {
 
 describe('POST /jetpack', () => {
   beforeEach(() => {
-    app.locals.urlNames = [];
   });
 
   it('should create a new url', (done) => {
