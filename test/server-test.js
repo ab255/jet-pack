@@ -2,28 +2,33 @@ const assert = require('assert');
 const request = require('supertest');
 const app = require('../server');
 
-describe('GET /', () => {
-
-  beforeEach(() => {
-    app.locals.urlNames = [{ id: 1, url: 'http://google.com'}];
-  });
-
-  afterEach(() => {
-    app.locals.urlNames = [];
-  });
+describe('GET /jetpack', () => {
 
   it('should return a 200 status code', (done) => {
     request(app)
-      .get('/')
-      .expect('Content-Type', /json/)
+      .get('/jetpack')
       .expect(200, done);
   });
 
-  it('should return a set urls stored in app.locals.urlNames', (done) => {
+  it('should return stored urls', (done) => {
     request(app)
-      .get('/')
-      .expect(200, {
-        urls: app.locals.urlNames
-      }, done);
+
   });
 });
+
+describe('POST /jetpack', () => {
+  beforeEach(() => {
+    app.locals.urlNames = [];
+  });
+
+  it('should create a new url', (done) => {
+    const url = { id: '1', url: 'http://google.com', date: '2011-01-08', count: 0 }
+      request(app)
+        .post('/jetpack')
+        .send({ url })
+        .expect(201)
+        .end(() => {
+          assert.deepEqual()
+        })
+  })
+})
