@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 let dbName = 'urlDB'
-let connectionString = 'mongodb://localhost:27017/' + dbName;
+let connectionString = 'mongodb://jetp.herokuapp.com/' + dbName;
 
 const port_number = process.env.PORT || 3000;
 
