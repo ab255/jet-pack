@@ -3,33 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Jet Pack</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #171D20;
+        font-family: 'Raleway', sans-serif;
+      }
+  </style>
   </head>
   <body>
-    <h1>Jet Pack</h1>
-    <form action='/' method='POST'>
-      <input type='text' placeholder='URL' name='url'></input>
-      <input type='submit'></input>
-    </form>
-    <a href="http://localhost:3000/oldest/">oldest</a>
-    <a href="http://localhost:3000/">newest</a>
-    <a href='http://localhost:3000/popular'>popular</a>
-    <a href='http://localhost:3000/unpopular'>unpopular</a>
-    <ul class="urls">
-      <% for(let i=0; i <urls.length; i++) { %>
-        <li class="url">
-          <span>
-            <%= urls[i].url %>
-          </span></br>
-          <span>
-            <a href='http://localhost:3000/<%= urls[i].id%>'>
-              localhost:3000/<%= urls[i].id%>
-            </a>
-          </span></br>
-          <span>
-            Times clicked: <%= urls[i].count%>
-          </span>
-        </li>
-      <% } %>
-    </ul>
+    <header style="position: relative; height: 70px; margin: -20px; padding: 10px; background-color: black;">
+      <h1 style="display: inline-block; color:#36DF67; letter-spacing: -4px; margin-left: 30px;">JP</h1>
+      <% include ./nav %>
+    </header>
+    <main
+      style="display: flex; width: 100vw;">
+      <% include ./input %>
+      <ul style="height: calc(100vh - 70px); width: 100%; overflow: scroll; margin-top: 20px; padding: 0; list-style: none;">
+        <% include ./url-card %>
+      </ul>
+    </main>
   </body>
 </html>

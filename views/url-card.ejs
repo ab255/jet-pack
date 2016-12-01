@@ -1,0 +1,23 @@
+  <% for(let i=0; i <urls.length; i++) { %>
+    <li style="position: relative; height: 10vh; width: 100; padding: 20px; background: linear-gradient(#252D32, #171D20); border-top-right-radius: 10px; border-top-left-radius: 10px;">
+      <span>
+        <a
+          href='http://localhost:3000/<%= urls[i].id%>'
+          style="text-decoration: none; color: white;"
+        >
+          localhost:3000/<%= urls[i].id%>
+        </a>
+      </span></br>
+      <span style="position: absolute; bottom: 15px;">
+        <span style="font-size: .5em; color: grey;">VIEWS:
+        <span
+          style="font-size: 3em; color: #36DF67;">
+          <%= urls[i].count%>
+        </span>
+      </span>
+      <span
+        style="position: absolute; bottom: 15px; left: 800%; font-size: 2.2em; color: #36DF67;">
+        <%= moment(urls[i].date).format('l') %>
+      </span>
+    </li>
+  <% } %>
