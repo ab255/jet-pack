@@ -26,7 +26,7 @@ router.post('/', (request, response) => {
 
   url.save((error) => {
     if(error) {
-      return response.send(error)
+      return response.status(400).send(error)
     }
     Url.find((error, Urls) => {
       response.render('index.ejs', {urls: Urls });
