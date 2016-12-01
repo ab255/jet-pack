@@ -32,7 +32,7 @@ router.post('/', (request, response) => {
       return response.status(400).send(error);
     }
     Url.find((error, Urls) => {
-      response.render('index.ejs', {urls: Urls });
+      response.render('index.ejs', {urls: Urls, moment: moment });
     });
   });
 });
