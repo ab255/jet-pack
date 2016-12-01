@@ -26,7 +26,7 @@ router.post('/', (request, response) => {
 
   url.save((error) => {
     if(error) {
-      return response.status(400).send(error)
+      return response.status(400).send(error);
     }
     Url.find((error, Urls) => {
       response.render('index.ejs', {urls: Urls });
@@ -37,7 +37,7 @@ router.post('/', (request, response) => {
 router.get('/oldest', (request, response) => {
   Url.find().sort('-date').exec((error, Urls) => {
     if(error) {
-      return response.send(error)
+      return response.send(error);
     }
     response.render('index.ejs', { urls: Urls });
   });
@@ -46,7 +46,7 @@ router.get('/oldest', (request, response) => {
 router.get('/popular', (request, response) => {
   Url.find().sort( '-count' ).exec((error, Urls) => {
     if(error) {
-      return response.send(error)
+      return response.send(error);
     }
     response.render('index.ejs', { urls: Urls });
   });
@@ -55,7 +55,7 @@ router.get('/popular', (request, response) => {
 router.get('/unpopular', (request, response) => {
   Url.find().sort( 'count' ).exec((error, Urls) => {
     if(error) {
-      return response.send(error)
+      return response.send(error);
     }
     response.render('index.ejs', { urls: Urls });
   });
