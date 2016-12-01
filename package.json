@@ -4,8 +4,6 @@
   "description": "URL shortening app",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "build": "webpack",
     "test": "mocha",
     "test-feature": "mocha test/specs/feature-test",
     "selenium-start": "java -jar ./test/specs/selenium.jar",
