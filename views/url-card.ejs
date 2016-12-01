@@ -1,0 +1,19 @@
+  <% for(let i=0; i <urls.length; i++) { %>
+    <li style="position: relative; height: 10vh; width: 300px; margin: 20px;">
+      <span>
+        <a
+          href='http://localhost:3000/<%= urls[i].id%>'
+          style="text-decoration: none; color: grey"
+        >
+          localhost:3000/<%= urls[i].id%>
+        </a>
+      </span></br>
+      <span style="position: absolute; right: 0; bottom: 0;">
+        <span style="font-size: .5em; color: grey;">VIEWS:
+        <span
+          style="font-size: 3em; color: #36DF67;">
+          <%= urls[i].count%>
+        </span>
+      </span>
+    </li>
+  <% } %>
