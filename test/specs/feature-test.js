@@ -8,13 +8,11 @@ const client = webdriverio.remote(options);
 let server;
 const port = process.env.PORT || 3001;
 
-before((done) => {
-  server = app.listen(port, (err) => {
-    if (err) { return done(err); }
-    done();
+describe('welcome page', function(){
+  it('should be able to grab the page title', function(){
+  	browser.url('/');
+  	var title = browser.getTitle();
+    console.log(title);
+  	assert.equal(title, 'Jetpack');
   });
-});
-
-after((done) => {
-  server.close(done);
 });
