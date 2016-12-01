@@ -5,6 +5,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const app = express();
 const shortid = require('shortid');
+const moment = require('moment');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
@@ -12,9 +13,9 @@ app.use(bodyParser.urlencoded({extended: true }));
 router.get('/', (request, response) => {
   Url.find().sort('date').exec((error, Urls) => {
         if(error) {
-      return response.send(error)
+      return response.send(error);
     }
-    response.render('index.ejs', { urls: Urls });
+    response.render('index.ejs', { urls: Urls, moment: moment });
   });
 });
 
@@ -23,7 +24,7 @@ router.post('/', (request, response) => {
   url.id = shortid.generate();
   url.date = new Date;
   url.count = 0;
-
+  console.log(url.date);
   url.save((error) => {
     if(error) {
       return response.status(400).send(error);
@@ -39,7 +40,7 @@ router.get('/oldest', (request, response) => {
     if(error) {
       return response.send(error);
     }
-    response.render('index.ejs', { urls: Urls });
+    response.render('index.ejs', { urls: Urls, moment: moment });
   });
 });
 
@@ -48,7 +49,7 @@ router.get('/popular', (request, response) => {
     if(error) {
       return response.send(error);
     }
-    response.render('index.ejs', { urls: Urls });
+    response.render('index.ejs', { urls: Urls, moment: moment });
   });
 });
 
@@ -57,7 +58,7 @@ router.get('/unpopular', (request, response) => {
     if(error) {
       return response.send(error);
     }
-    response.render('index.ejs', { urls: Urls });
+    response.render('index.ejs', { urls: Urls, moment: moment });
   });
 });
 

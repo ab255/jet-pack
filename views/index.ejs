@@ -8,17 +8,22 @@
       body {
       background-color: #171D20;
       font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
       }
   </style>
   </head>
-  <body style="margin: auto;">
-    <header style="position: relative; width: vw; height: 10vh; background-color: black; margin: -20px; padding: 10px;">
+  <body>
+    <header style="position: relative; height: 70px; background-color: black; margin: -20px; padding: 10px;">
       <h1 style="display: inline-block; color:#36DF67; letter-spacing: -4px; margin-left: 30px;">JP</h1>
       <% include ./nav %>
     </header>
-    <% include ./input %>
-    <ul style="list-style: none;">
-      <% include ./url-card %>
-    </ul>
+    <main
+      style="width: 100vw; display: flex;">
+      <% include ./input %>
+      <ul style=" margin-top: 20px; height: calc(100vh - 70px); width: 100%; list-style: none; overflow: scroll; padding: 0;">
+        <% include ./url-card %>
+      </ul>
+    </main>
   </body>
 </html>

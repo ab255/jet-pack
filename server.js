@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require ('mongoose');
-const MongoClient =require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 
 const urls = require('./routes/urls');
 
