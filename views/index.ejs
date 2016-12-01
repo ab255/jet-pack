@@ -6,10 +6,14 @@
   </head>
   <body>
     <h1>Jet Pack</h1>
-    <form action='/jetpack' method='POST'>
+    <form action='/' method='POST'>
       <input type='text' placeholder='URL' name='url'></input>
       <input type='submit'></input>
     </form>
+    <a href="http://localhost:3000/oldest/">oldest</a>
+    <a href="http://localhost:3000/">newest</a>
+    <a href='http://localhost:3000/popular'>popular</a>
+    <a href='http://localhost:3000/unpopular'>unpopular</a>
     <ul class="urls">
       <% for(let i=0; i <urls.length; i++) { %>
         <li class="url">
@@ -17,8 +21,8 @@
             <%= urls[i].url %>
           </span></br>
           <span>
-            <a href='http://localhost:3000/jetpack/<%= urls[i].id%>'>
-              localhost:3000/jetpack/<%= urls[i].id%>
+            <a href='http://localhost:3000/<%= urls[i].id%>'>
+              localhost:3000/<%= urls[i].id%>
             </a>
           </span></br>
           <span>
