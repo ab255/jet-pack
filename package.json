@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "selenium-webdriver": "^3.0.1",
+    "supertest": "^2.0.1",
     "webdriverio": "^4.4.0"
   }
 }
